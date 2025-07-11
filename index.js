@@ -10,7 +10,7 @@ const port = process.env.PORT || 5000;
 mongoDB().then(() => {
   // Middleware
   app.use(cors({
-    origin: 'http://localhost:3000', // Replace with frontend URL if deployed
+    origin: ['http://localhost:3000', 'https://heroic-baklava-7c01aa.netlify.app'],
     credentials: true,
   }));
 
