@@ -39,11 +39,14 @@ router.post('/orderData', async (req, res) => {
 router.post('/myorderData', async (req, res) => {
     try {
         let myData = await Order.findOne({ email: req.body.email });
-        res.json({ orderData: myData });
+        if (!myData) return res.status(404).json({ order_data: [] });
+
+        res.json({ order_data: myData.order_data }); // ✅ fixed
     } catch (error) {
         console.error(error.message);
         res.status(500).json({ error: "Server Error", message: error.message });
     }
 });
+
 
 module.exports = router;
