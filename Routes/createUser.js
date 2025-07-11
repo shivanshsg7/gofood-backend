@@ -4,7 +4,9 @@ const User = require('../models/User');
 const { body, validationResult } = require('express-validator');
 const jwt= require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const jwtSecret = 'shivanshsg7'; 
+require('dotenv').config(); // Load .env
+const jwtSecret = process.env.JWT_SECRET;
+
 
 
 router.post(
